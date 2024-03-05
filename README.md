@@ -62,7 +62,7 @@ That's it! You can now use Countdown Component in your Nuxt app ✨
 
 When you add this module, the ```<Countdown>``` component will be **automatically imported** into the project.
 
-#### Basic Usage
+### Basic Usage
 
 
 ```js
@@ -76,7 +76,7 @@ When you add this module, the ```<Countdown>``` component will be **automaticall
 </template>
 ```
 
-#### Custom Interval
+### Custom Interval
 
 You can set custom interval time value for update countdown values.
 
@@ -100,7 +100,7 @@ const time: Ref<number> = ref(newYear.getTime() - now.getTime());
 <script />
 ```
 
-#### Transform Slot Props
+### Transform Slot Props
 
 You can modify the slot props provided from component for different purposes with ```:transform``` prop. 
 
@@ -131,7 +131,7 @@ const transformSlotProps = (props: Record<string, number>) => {
 <script />
 ```
 
-#### Countdown On Demand
+### Countdown On Demand
 
 You might want to start countdown after some functionality. 
 
