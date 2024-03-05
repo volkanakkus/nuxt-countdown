@@ -7,14 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineProps,
-  ref,
-  computed,
-  onMounted,
-  onBeforeUnmount,
-  type Ref,
-} from "vue";
+import { ref, computed, onMounted, onBeforeUnmount, type Ref } from "vue";
 
 const MILLISECONDS_SECOND = 1000;
 const MILLISECONDS_MINUTE = 60 * MILLISECONDS_SECOND;
