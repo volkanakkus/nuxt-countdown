@@ -1,6 +1,6 @@
 {
   "name": "nuxt-countdown",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Countdown component for Nuxt 3.  ",
   "repository": "volkanakkus/nuxt-countdown",
   "license": "MIT",
