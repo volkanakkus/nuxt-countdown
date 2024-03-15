@@ -29,7 +29,7 @@ A countdown module for multi purpose usage written for Nuxt 3.
 
 ## Documentation
 
-We're preparing the documentation and playground, it will be added soon.
+While we're preparing detailed documentation and playground, you can check the examples below.
 
 ## Quick Setup
 
