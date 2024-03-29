@@ -190,10 +190,6 @@ With prefix option, then you can use the components as:
 </template>
 ```
 
----
-
-And also special thanks to [@fengyuanchen](https://github.com/fengyuanchen), this module created with the same concept of [vue-countdown](https://github.com/fengyuanchen/vue-countdown) package <3 
-
 ## Development
 
 ```bash
@@ -215,6 +211,9 @@ npm run lint
 # Release new version
 npm run release
 ```
+---
+
+This software is licensed under the [MIT License](https://github.com/volkanakkus/nuxt-countdown/blob/main/LICENSE) | @volkanakkus | Special thanks to [@fengyuanchen](https://github.com/fengyuanchen) 💚 
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/nuxt-countdown/latest.svg?style=flat&colorA=020420&colorB=00DC82
