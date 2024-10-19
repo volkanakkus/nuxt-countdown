@@ -1,16 +1,16 @@
 <template>
   <div>
-    Test
+    Basic usage with Date object
     <Countdown
-      v-slot="{ days, hours, minutes, seconds }"
-      :date="new Date('May 5, 2026 16:50:30')"
+      v-slot="{ years, days, hours, minutes, seconds }"
+      :date="new Date('Oct 19, 2026 16:50:30')"
     >
-      Time Remaining: {{ days }} days, {{ hours }} hours, {{ minutes }} minutes,
-      {{ seconds }} seconds.
+      Time Remaining: {{ years }} years, {{ days }} days, {{ hours }} hours,
+      {{ minutes }} minutes, {{ seconds }} seconds.
     </Countdown>
 
     <br />
-    Basic usage
+    Basic usage with time in milliseconds
     <Countdown
       v-slot="{ days, hours, minutes, seconds }"
       :time="2 * 24 * 60 * 60 * 1000"
@@ -34,8 +34,20 @@
 
     <br />
 
-    Transform slot props
+    Total time remaining
+    <Countdown
+      v-slot="{ totalDays, totalHours, totalMinutes, totalSeconds }"
+      :date="new Date('Oct 19, 2026 16:50:30')"
+    >
+      <br />
 
+      Time Remaining: {{ totalDays }} days or {{ totalHours }} hours or
+      {{ totalMinutes }} minutes or {{ totalSeconds }} seconds.
+    </Countdown>
+
+    <br />
+
+    Transform slot props
     <Countdown
       v-slot="{ days, hours, minutes, seconds }"
       :time="2 * 24 * 60 * 60 * 1000"

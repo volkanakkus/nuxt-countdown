@@ -11,6 +11,7 @@ const MILLISECONDS_SECOND = 1000;
 const MILLISECONDS_MINUTE = 60 * MILLISECONDS_SECOND;
 const MILLISECONDS_HOUR = 60 * MILLISECONDS_MINUTE;
 const MILLISECONDS_DAY = 24 * MILLISECONDS_HOUR;
+const MILLISECONDS_YEAR = 365 * MILLISECONDS_DAY;
 const EVENT_ABORT = "abort";
 const EVENT_END = "end";
 const EVENT_PROGRESS = "progress";
@@ -78,6 +79,13 @@ const props = defineProps({
     type: Function,
     default: (props: unknown) => props,
   },
+  /**
+   * Is years included in the countdown.
+   */
+  withYears: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 /**Emits---------------- */
@@ -106,11 +114,26 @@ const time = computed(() => {
   return props.date?.getTime() - props.now() || props.time;
 });
 /**
+ * Remaining years.
+ * @returns {number} The computed value.
+ */
+const years = computed(() => {
+  return props.withYears
+    ? Math.floor(totalMilliseconds.value / MILLISECONDS_YEAR)
+    : 0;
+});
+/**
  * Remaining days.
  * @returns {number} The computed value.
  */
 const days = computed(() => {
-  return Math.floor(totalMilliseconds.value / MILLISECONDS_DAY);
+  if (props.withYears) {
+    return Math.floor(
+      (totalMilliseconds.value % MILLISECONDS_YEAR) / MILLISECONDS_DAY
+    );
+  } else {
+    return Math.floor(totalMilliseconds.value / MILLISECONDS_DAY);
+  }
 });
 /**
  * Remaining hours.
@@ -151,7 +174,7 @@ const milliseconds = computed(() => {
  * @returns {number} The computed value.
  * */
 const totalDays = computed(() => {
-  return days.value;
+  return props.withYears ? days.value + years.value * 365 : days.value;
 });
 /**
  * Total remaining hours.
@@ -297,6 +320,7 @@ const progress = () => {
      * @event Countdown#progress
      */
     emit(EVENT_PROGRESS, {
+      years: years.value,
       days: days.value,
       hours: hours.value,
       minutes: minutes.value,
@@ -403,6 +427,7 @@ const handleVisibilityChange = () => {
 /**Slot Props -------- */
 const transformedProps = computed(() =>
   props.transform({
+    years: years.value,
     days: days.value,
     hours: hours.value,
     minutes: minutes.value,

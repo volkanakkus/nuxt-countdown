@@ -14,7 +14,7 @@ Find and replace all on all files (CMD+SHIFT+F):
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-A countdown module for multi purpose usage written for Nuxt 3.
+A countdown module for multi purpose usage written for Nuxt 3 or newer.
 
 <!-- - [✨ &nbsp;Release Notes](/CHANGELOG.md) -->
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-countdown?file=playground%2Fapp.vue) -->
@@ -62,8 +62,21 @@ That's it! You can now use Countdown Component in your Nuxt app ✨
 
 When you add this module, the ```<Countdown>``` component will be **automatically imported** into the project.
 
-### Basic Usage
+### Basic Usage with Date Object
 
+```js
+<template>
+  <Countdown
+      v-slot="{ days, hours, minutes, seconds }"
+      :date="new Date('Oct 19, 2026 16:50:30')"
+    >
+      Time Remaining: {{ days }} days, {{ hours }} hours,
+      {{ minutes }} minutes, {{ seconds }} seconds.
+  </Countdown>
+</template>
+```
+
+### Basic Usage with Time in Milliseconds
 
 ```js
 <template>
@@ -100,6 +113,23 @@ const time: Ref<number> = ref(newYear.getTime() - now.getTime());
 <script />
 ```
 
+### withYears Prop
+
+If you want to show years in countdown, you can use ```withYear``` prop.
+Default value of ```withYear``` prop is ```false```. You can set it to ```true``` to show years.
+
+```js
+<template>
+<Countdown
+    v-slot="{ years, days, hours, minutes, seconds }"
+    :date="new Date('Oct 19, 2026 16:50:30')"
+  >
+    Time Remaining: {{ years }} years, {{ days }} days, {{ hours }} hours,
+    {{ minutes }} minutes, {{ seconds }} seconds.
+  </Countdown>
+</template>
+```
+
 ### Transform Slot Props
 
 You can modify the slot props provided from component for different purposes with ```:transform``` prop. 
@@ -131,7 +161,6 @@ const transformSlotProps = (props: Record<string, number>) => {
 <script />
 ```
 
-
 ### Tag Prop
 
 You can specify the wrapper element to render with ```:tag``` prop. Default value is ```div```.
@@ -156,9 +185,6 @@ Will render as:
   Time Remaining: 1 days, 23 hours, 59 minutes, 53 seconds. 
 </span>
 ```
-
-
-
 
 ### Countdown On Demand
 
@@ -192,6 +218,22 @@ const onCountdownEnd = () => {
   counting.value = false;
 };
 <script />
+```
+
+### Total Time Remaining
+
+```js
+<template>
+  <Countdown
+    v-slot="{ totalDays, totalHours, totalMinutes, totalSeconds }"
+    :date="new Date('Oct 19, 2026 16:50:30')"
+  >
+    <br />
+
+    Time Remaining: {{ totalDays }} days or {{ totalHours }} hours or
+    {{ totalMinutes }} minutes or {{ totalSeconds }} seconds.
+  </Countdown>
+</template>
 ```
 
 
