@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <component :is="tag">
-      <slot v-bind="transformedProps" />
-    </component>
-  </div>
+  <component :is="tag">
+    <slot v-bind="transformedProps" />
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -54,7 +52,7 @@ const props = defineProps({
    */
   tag: {
     type: String,
-    default: "span",
+    default: "div",
   },
   /**
    * The time (in milliseconds) to count down from.
@@ -63,6 +61,15 @@ const props = defineProps({
     type: Number,
     default: 0,
     validator: (value: number) => value >= 0,
+  },
+  /**
+   * The time (in Date) to count down from.
+   * @type {Date}
+   */
+  date: {
+    type: Date,
+    default: null,
+    validator: (value: Date) => value.getTime() >= 0,
   },
   /**
    * Transforms the output props before render.
@@ -91,6 +98,13 @@ const requestId: Ref<number> = ref(0);
 /**------------------- */
 
 /**Computed---------------- */
+/**
+ * Time
+ * @returns {number} The computed value.
+ */
+const time = computed(() => {
+  return props.date?.getTime() - props.now() || props.time;
+});
 /**
  * Remaining days.
  * @returns {number} The computed value.
@@ -164,8 +178,8 @@ const totalSeconds = computed(() => {
 
 /**Lifecycles--------- */
 onMounted(() => {
-  totalMilliseconds.value = props.time;
-  endTime.value = props.now() + props.time;
+  totalMilliseconds.value = time.value;
+  endTime.value = props.now() + time.value;
 
   if (props.autoStart) {
     start();
@@ -194,8 +208,8 @@ const start = () => {
   counting.value = true;
 
   if (!props.autoStart) {
-    totalMilliseconds.value = props.time;
-    endTime.value = props.now() + props.time;
+    totalMilliseconds.value = time.value;
+    endTime.value = props.now() + time.value;
   }
 
   if (props.emitEvents) {
@@ -360,8 +374,8 @@ const update = () => {
  */
 const restart = () => {
   pause();
-  totalMilliseconds.value = props.time;
-  endTime.value = props.now() + props.time;
+  totalMilliseconds.value = time.value;
+  endTime.value = props.now() + time.value;
   counting.value = false;
   start();
 };

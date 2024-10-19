@@ -1,11 +1,21 @@
 <template>
   <div>
+    Test
+    <Countdown
+      v-slot="{ days, hours, minutes, seconds }"
+      :date="new Date('May 5, 2026 16:50:30')"
+    >
+      Time Remaining: {{ days }} days, {{ hours }} hours, {{ minutes }} minutes,
+      {{ seconds }} seconds.
+    </Countdown>
+
+    <br />
     Basic usage
     <Countdown
       v-slot="{ days, hours, minutes, seconds }"
       :time="2 * 24 * 60 * 60 * 1000"
     >
-      Time Remaining：{{ days }} days, {{ hours }} hours, {{ minutes }} minutes,
+      Time Remaining: {{ days }} days, {{ hours }} hours, {{ minutes }} minutes,
       {{ seconds }} seconds.
     </Countdown>
 
@@ -17,7 +27,7 @@
       :time="customTime"
       :interval="100"
     >
-      New Year Countdown：{{ days }} days, {{ hours }} hours,
+      New Year Countdown: {{ days }} days, {{ hours }} hours,
       {{ minutes }} minutes, {{ seconds }}.{{ Math.floor(milliseconds / 100) }}
       seconds.
     </Countdown>
@@ -31,7 +41,7 @@
       :time="2 * 24 * 60 * 60 * 1000"
       :transform="transformSlotProps"
     >
-      Time Remaining：{{ days }} days, {{ hours }} hours, {{ minutes }} minutes,
+      Time Remaining: {{ days }} days, {{ hours }} hours, {{ minutes }} minutes,
       {{ seconds }} seconds.
     </Countdown>
 
@@ -43,7 +53,7 @@
       <Countdown
         v-if="counting"
         v-slot="{ totalSeconds }"
-        :time="60100"
+        :time="60500"
         @end="onCountdownEnd"
       >
         Fetch again {{ totalSeconds }} seconds later
@@ -64,21 +74,17 @@ const customTime: Ref<number> = ref(newYear.getTime() - now.getTime());
 // Transform slot props
 const transformSlotProps = (props: Record<string, number>) => {
   const formattedProps: Record<string, string> = {};
-
   Object.entries(props).forEach(([key, value]) => {
     formattedProps[key] = (value as number) < 10 ? `0${value}` : String(value);
   });
-
   return formattedProps;
 };
 
 // Countdown on demand
 const counting: Ref<boolean> = ref(false);
-
 const startCountdown = () => {
   counting.value = true;
 };
-
 const onCountdownEnd = () => {
   counting.value = false;
 };

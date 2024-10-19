@@ -131,6 +131,35 @@ const transformSlotProps = (props: Record<string, number>) => {
 <script />
 ```
 
+
+### Tag Prop
+
+You can specify the wrapper element to render with ```:tag``` prop. Default value is ```div```.
+
+```js
+<template>
+ <Countdown
+    tag="span"
+    :time="2 * 24 * 60 * 60 * 1000"
+    v-slot="{ days, hours, minutes, seconds }"
+  >
+    Time Remaining：{{ days }} days, {{ hours }} hours, {{ minutes }} minutes,
+    {{ seconds }} seconds.
+  </Countdown>
+</template>
+```
+
+Will render as: 
+
+```html
+<span>
+  Time Remaining: 1 days, 23 hours, 59 minutes, 53 seconds. 
+</span>
+```
+
+
+
+
 ### Countdown On Demand
 
 You might want to start countdown after some functionality. 
