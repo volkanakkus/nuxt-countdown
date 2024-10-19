@@ -113,14 +113,15 @@ const time: Ref<number> = ref(newYear.getTime() - now.getTime());
 <script />
 ```
 
-### withYears Prop
+### With Years Prop
 
-If you want to show years in countdown, you can use ```withYear``` prop.
-Default value of ```withYear``` prop is ```false```. You can set it to ```true``` to show years.
+If you want to show years in countdown, you can use ```with-years``` prop.
+Default value of ```with-years``` prop is ```false```. You can set it to ```true``` to show years.
 
 ```js
 <template>
 <Countdown
+    with-years
     v-slot="{ years, days, hours, minutes, seconds }"
     :date="new Date('Oct 19, 2026 16:50:30')"
   >

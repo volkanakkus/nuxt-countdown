@@ -3,6 +3,7 @@
     Basic usage with Date object
     <Countdown
       v-slot="{ years, days, hours, minutes, seconds }"
+      with-years
       :date="new Date('Oct 19, 2026 16:50:30')"
     >
       Time Remaining: {{ years }} years, {{ days }} days, {{ hours }} hours,
