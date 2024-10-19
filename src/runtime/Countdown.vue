@@ -441,4 +441,12 @@ const transformedProps = computed(() =>
   })
 );
 /**------------------- */
+
+defineExpose({
+  start,
+  pause,
+  abort,
+  end,
+  restart,
+});
 </script>
