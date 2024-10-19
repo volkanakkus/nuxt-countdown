@@ -64,6 +64,8 @@ When you add this module, the ```<Countdown>``` component will be **automaticall
 
 ### Basic Usage with Date Object
 
+With ```:date``` prop, you can set the target date for countdown.
+
 ```js
 <template>
   <Countdown
@@ -77,6 +79,8 @@ When you add this module, the ```<Countdown>``` component will be **automaticall
 ```
 
 ### Basic Usage with Time in Milliseconds
+
+With ```:time``` prop, you can set the target time in milliseconds for countdown.
 
 ```js
 <template>
