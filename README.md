@@ -229,7 +229,7 @@ const onCountdownEnd = () => {
 
 ### Total Time Remaining
 
-You can all total time remaining with ```totalDays```, ```totalHours```, ```totalMinutes```, ```totalSeconds``` slot props.
+You can all access total time remaining with ```totalDays```, ```totalHours```, ```totalMinutes```, ```totalSeconds``` slot props.
 
 ```js
 <template>
