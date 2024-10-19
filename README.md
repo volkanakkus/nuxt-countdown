@@ -58,7 +58,7 @@ export default defineNuxtConfig({
 
 That's it! You can now use Countdown Component in your Nuxt app ✨
 
-## Nuxt 3 Examples
+## Examples
 
 When you add this module, the ```<Countdown>``` component will be **automatically imported** into the project.
 
@@ -66,11 +66,13 @@ When you add this module, the ```<Countdown>``` component will be **automaticall
 
 With ```:date``` prop, you can set the target date for countdown.
 
+Then you can use slot props to show the countdown values in ```days```, ```hours```, ```minutes```, ```seconds``` or ```milliseconds```. (```milliseconds``` is available for custom interval)
+
 ```js
 <template>
   <Countdown
-      v-slot="{ days, hours, minutes, seconds }"
       :date="new Date('Oct 19, 2026 16:50:30')"
+      v-slot="{ days, hours, minutes, seconds }"
     >
       Time Remaining: {{ days }} days, {{ hours }} hours,
       {{ minutes }} minutes, {{ seconds }} seconds.
@@ -95,7 +97,7 @@ With ```:time``` prop, you can set the target time in milliseconds for countdown
 
 ### Custom Interval
 
-You can set custom interval time value for update countdown values.
+You can set custom interval time value for update countdown values with ```:interval``` prop, value in milliseconds.
 
 ```js
 <template>
@@ -126,8 +128,8 @@ Default value of ```with-years``` prop is ```false```. You can set it to ```true
 <template>
 <Countdown
     with-years
-    v-slot="{ years, days, hours, minutes, seconds }"
     :date="new Date('Oct 19, 2026 16:50:30')"
+    v-slot="{ years, days, hours, minutes, seconds }"
   >
     Time Remaining: {{ years }} years, {{ days }} days, {{ hours }} hours,
     {{ minutes }} minutes, {{ seconds }} seconds.
@@ -227,11 +229,13 @@ const onCountdownEnd = () => {
 
 ### Total Time Remaining
 
+You can all total time remaining with ```totalDays```, ```totalHours```, ```totalMinutes```, ```totalSeconds``` slot props.
+
 ```js
 <template>
   <Countdown
-    v-slot="{ totalDays, totalHours, totalMinutes, totalSeconds }"
     :date="new Date('Oct 19, 2026 16:50:30')"
+    v-slot="{ totalDays, totalHours, totalMinutes, totalSeconds }"
   >
     <br />
 
