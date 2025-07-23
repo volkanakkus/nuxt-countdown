@@ -4,7 +4,7 @@ Get your module up and running quickly.
 Find and replace all on all files (CMD+SHIFT+F):
 - Name: Nuxt Countdown
 - Package name: nuxt-countdown
-- Description: Countdown component for Nuxt 3.
+- Description: Countdown component for Nuxt App.
 -->
 
 # Nuxt Countdown
@@ -14,7 +14,7 @@ Find and replace all on all files (CMD+SHIFT+F):
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-A countdown module for multi purpose usage written for Nuxt 3 or newer.
+A countdown module for multi purpose usage written for Nuxt 3 and 4.
 
 <!-- - [✨ &nbsp;Release Notes](/CHANGELOG.md) -->
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-countdown?file=playground%2Fapp.vue) -->
@@ -23,7 +23,7 @@ A countdown module for multi purpose usage written for Nuxt 3 or newer.
 ## Features
 
 <!-- Highlight some of the features your module provide here -->
-- Nuxt 3 Ready
+- Nuxt 3 and 4 Support
 - Autoimport
 - Less config
 
