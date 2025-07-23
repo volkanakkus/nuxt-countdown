@@ -10,7 +10,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: "nuxt-countdown",
     configKey: "countdown",
     compatibility: {
-      nuxt: "^3.0.0",
+      nuxt: '>=3.0.0',
     },
   },
   defaults: {
