@@ -1,5 +1,16 @@
-# Changelog
+# Changelog.
 
+## v1.2.1
+
+
+### 🚀 Enhancements
+
+- Indicate compatibility with new v4 major #3 ([a25ed44](https://github.com/volkanakkus/nuxt-countdown/commit/a25ed44))
+
+
+### ❤️ Contributors
+
+- [Volkan Akkuş](https://github.com/volkanakkus)
 
 ## v1.2.0
 
